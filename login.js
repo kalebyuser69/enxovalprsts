@@ -18,18 +18,19 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   if (!telefonePattern.test(telefone)) {
     statusElement.textContent = 'Por favor, insira um número de telefone válido no formato: (XX) 9 XXXX-XXXX';
     statusElement.classList.add('erro');
+    statusElement.classList.remove('sucesso', 'aviso');  // Limpar outras classes
     return; // Impede o envio do formulário se o telefone não for válido
   }
 
   try {
-    const response = await fetch('http://localhost:5000/api/login', {
+    const response = await fetch('https://enxovalprsts.vercel.app/login.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ telefone, senha, nome })
     });
 
     const data = await response.json();
-    
+
     // Remover classes antigas antes de adicionar a nova
     statusElement.classList.remove('sucesso', 'aviso', 'erro');
 
@@ -63,5 +64,6 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     console.error('Erro:', error);
     statusElement.textContent = 'Erro ao tentar fazer login.';
     statusElement.classList.add('erro');
+    statusElement.classList.remove('sucesso', 'aviso'); // Limpar outras classes
   }
 });

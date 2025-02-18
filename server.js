@@ -3,9 +3,19 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { nanoid } = require('nanoid');
+const path = require('path');
+
 
 const app = express();
 const port = 5000;
+
+// Servir arquivos estáticos da pasta public
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Definir uma rota padrão para servir a página inicial
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
 
 app.use(cors());
 app.use(bodyParser.json());

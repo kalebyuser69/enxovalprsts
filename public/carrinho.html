@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <h1>Carrinho de Compras</h1>
+
+    <!-- Aqui serão exibidos os produtos no carrinho -->
+    <div id="produtos-carrinho"></div>
+
+    <!-- Mostrar mensagem caso o carrinho esteja vazio -->
+    <div id="carrinho-vazio" style="display:none;">
+        <p>Seu carrinho está vazio.</p>
+    </div>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carrinhoContainer = document.getElementById("produtos-carrinho");
+            const carrinhoVazioMsg = document.getElementById("carrinho-vazio");
+
+            function mostrarCarrinho() {
+                let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+                if (carrinho.length === 0) {
+                    carrinhoContainer.innerHTML = "";
+                    carrinhoVazioMsg.style.display = "block";
+                } else {
+                    carrinhoVazioMsg.style.display = "none";
+                    carrinhoContainer.innerHTML = "<h2>Produtos no Carrinho:</h2>";
+                    const ul = document.createElement("ul");
+
+                    carrinho.forEach(produto => {
+                        const li = document.createElement("li");
+                        li.textContent = `${produto.quantidade} ${produto.nome}`;
+                        ul.appendChild(li);
+                    });
+
+                    carrinhoContainer.appendChild(ul);
+                }
+            }
+
+            mostrarCarrinho(); // Chama a função para mostrar os produtos do carrinho
+        });
+    </script>
+</body>
+</html>
