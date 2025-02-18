@@ -1,0 +1,68 @@
+/* Resetando margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilizando o corpo da página */
+body {
+    background-color: #f4f4f4; /* Fundo suave */
+    color: #333; /* Cor do texto */
+    padding: 20px;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7b5de7;
+}
+
+h2 {
+    font-weight: bold; /* Negrito */
+	font-size: 40px; /* Tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 1.5rem; /* Espaçamento inferior */
+    color: #f8faf2; /* Cor do texto */
+	margin-top: 10px;
+	text-shadow: 2px 2px 4px #080808; /* Adiciona sombra ao texto */
+}
+/* Container principal do carrinho */
+#produtos-carrinho {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgb(155, 216, 206);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Lista de produtos */
+#produtos-carrinho ul {
+    list-style: none;
+    padding: 0;
+
+}
+
+/* Cada item do carrinho */
+#produtos-carrinho li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Mensagem quando o carrinho está vazio */
+#carrinho-vazio {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 20px;
+}
